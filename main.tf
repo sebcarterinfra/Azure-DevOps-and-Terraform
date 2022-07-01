@@ -12,6 +12,10 @@ provider "azurerm" {
     features {}
 }
 
+locals {
+    currentimage = var.currentimage
+}
+
 terraform {
     backend "azurerm" {
       resource_group_name   = "tf_rg_blobstore"
@@ -19,7 +23,6 @@ terraform {
       container_name        = "tfstate"
       key                   = "terraform.tfstate"
     }
-    
 }
 
 resource "azurerm_resource_group" "tf_test" {
@@ -38,7 +41,7 @@ resource "azurerm_container_group" "tfcg_test" {
 
     container {
         name        = var.apiname
-        image       = "${var.dockerID}/${var.apiname}:${var.imagebuild}"
+        image       = "${var.dockerID}/${var.apiname}:${locals.currentimage}"
         cpu         = "1"
         memory      = "1"
 
