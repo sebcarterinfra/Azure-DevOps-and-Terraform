@@ -38,7 +38,7 @@ resource "azurerm_container_group" "tfcg_test" {
 
     container {
         name        = "weatherapi"
-        image       = "sebcarter/weatherapi"
+        image       = "sebcarter/weatherapi:${var.imagebuild}"
         cpu         = "1"
         memory      = "1"
 
