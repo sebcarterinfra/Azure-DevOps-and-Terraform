@@ -22,23 +22,6 @@ terraform {
     
 }
 
-variable "imagebuild" {
-  type        = string
-  description = "Latest Image Build"
-}
-
-variable "apiname" {
-    type        = string
-    description = "Name of our API"
-    default = "weatherapi"
-}
-
-variable "dockerID" {
-    type        = string
-    description = "DockerID name"
-    default = "sebcarter"
-}
-
 resource "azurerm_resource_group" "tf_test" {
     name = "tfmainrg"
     location = "uksouth"
