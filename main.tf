@@ -27,13 +27,25 @@ variable "imagebuild" {
   description = "Latest Image Build"
 }
 
+variable "apiname" {
+    type        = string
+    description = "Name of our API"
+    default = "weatherapi"
+}
+
+variable "dockerID" {
+    type        = string
+    description = "DockerID name"
+    default = "sebcarter"
+}
+
 resource "azurerm_resource_group" "tf_test" {
     name = "tfmainrg"
     location = "uksouth"
 }
 
 resource "azurerm_container_group" "tfcg_test" {
-    name                = "weatherapi"
+    name                = var.apiname
     location            = azurerm_resource_group.tf_test.location
     resource_group_name = azurerm_resource_group.tf_test.name
 
@@ -42,8 +54,8 @@ resource "azurerm_container_group" "tfcg_test" {
     os_type             = "Linux"
 
     container {
-        name        = "weatherapi"
-        image       = "sebcarter/weatherapi:${var.imagebuild}"
+        name        = var.apiname
+        image       = "${var.dockerID}/${var.apiname}:${var.imagebuild}"
         cpu         = "1"
         memory      = "1"
 
@@ -53,7 +65,6 @@ resource "azurerm_container_group" "tfcg_test" {
         }
     }
 }
-
 
 // init
 // plan
