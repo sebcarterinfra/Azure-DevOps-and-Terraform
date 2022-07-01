@@ -18,7 +18,8 @@ terraform {
       storage_account_name  = "tfstorageaccountseb"
       container_name        = "tfstate"
       key                   = "terraform.tfstate"
-    }   
+    }
+    
 }
 
 variable "imagebuild" {
