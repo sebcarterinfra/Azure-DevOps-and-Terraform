@@ -41,7 +41,7 @@ resource "azurerm_container_group" "tfcg_test" {
 
     container {
         name        = var.apiname
-        image       = "${var.dockerID}/${var.apiname}:${locals.currentimage}"
+        image       = "${var.dockerID}/${var.apiname}:${local.currentimage}"
         cpu         = "1"
         memory      = "1"
 
