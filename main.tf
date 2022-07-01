@@ -18,8 +18,7 @@ terraform {
       storage_account_name  = "tfstorageaccountseb"
       container_name        = "tfstate"
       key                   = "terraform.tfstate"
-    }
-    
+    }   
 }
 
 variable "imagebuild" {
@@ -37,7 +36,7 @@ resource "azurerm_container_group" "tfcg_test" {
     location            = azurerm_resource_group.tf_test.location
     resource_group_name = azurerm_resource_group.tf_test.name
 
-    ip_address_type     = "Public"
+    ip_address_type     = "public"
     dns_name_label      = "sebcarterwa"
     os_type             = "Linux"
 
