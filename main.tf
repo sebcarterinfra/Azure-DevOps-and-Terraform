@@ -13,7 +13,7 @@ provider "azurerm" {
 }
 
 locals {
-    currentimage = var.currentimage
+    currentimage = var.imagebuild
 }
 
 terraform {
